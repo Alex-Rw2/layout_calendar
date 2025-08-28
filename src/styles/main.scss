@@ -1,7 +1,10 @@
 @import './variables';
 
-body {
-  margin: 0;
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .calendar {
@@ -13,17 +16,19 @@ body {
 }
 
 .calendar__day {
-  height: 100px;
-  width: 100px;
+  height: $day-width;
+  width: $day-width;
   background-color: #eee;
   cursor: pointer;
-  border: black solid 1px;
+  border: black solid $border-width;
   display: flex;
   justify-content: center;
   font-family: Arial, sans-serif;
   font-size: 30px;
   text-align: center;
-  transition: 0.5s;
+  transition:
+    background-color 0.5s,
+    transform 0.5s;
 }
 
 .calendar__day:hover {
@@ -38,7 +43,7 @@ body {
   }
 }
 
-@each $day, $i in (sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6,) {
+@each $day, $i in (sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6) {
   .calendar--start-day-#{$day} {
     .calendar__day:first-child {
       margin-left: ($day-width + $gap) * $i;
